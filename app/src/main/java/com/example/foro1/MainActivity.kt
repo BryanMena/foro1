@@ -60,7 +60,10 @@ class MainActivity : AppCompatActivity() {
 
         if (usuarioValido(email, password)) {
             // Usuario valido
-                Log.d("MainActivity", email)
+            Toast.makeText(this, "Inicio de sesion exitoso", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ProductosActivity::class.java)
+            startActivity(intent)
+
         } else {
             // Usuario invalido
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
