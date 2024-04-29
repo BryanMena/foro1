@@ -64,6 +64,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ProductosActivity::class.java)
             startActivity(intent)
 
+            // Limpiar campos
+            emailEditText.text?.clear()
+            passwordEditText.text?.clear()
+
         } else {
             // Usuario invalido
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()

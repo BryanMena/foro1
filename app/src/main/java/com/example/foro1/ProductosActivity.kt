@@ -1,6 +1,7 @@
 package com.example.foro1
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +31,11 @@ class ProductosActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val botonCerrarSesion = findViewById<Button>(R.id.boton_cerrar_sesion)
+        botonCerrarSesion.setOnClickListener {
+            finish()
         }
 
         // Conexion a base de datos
