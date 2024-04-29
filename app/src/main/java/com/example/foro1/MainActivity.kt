@@ -2,17 +2,22 @@ package com.example.foro1
 
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.foro1.db.HelperDB
 import com.example.foro1.model.Usuarios
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
     private var dbHelper: HelperDB? = null
     private var db: SQLiteDatabase? = null
+    private lateinit var instanciaUsuarios: Usuarios
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +34,35 @@ class MainActivity : AppCompatActivity() {
         db = dbHelper!!.writableDatabase
 
         // Insertar usuarios por defecto
-        val instanciaUsuarios = Usuarios(this)
+        instanciaUsuarios = Usuarios(this)
         instanciaUsuarios.insertValuesDefault()
+
+        val botonLogin = findViewById<Button>(R.id.boton_login)
+        botonLogin.setOnClickListener {
+            login()
+        }
+    }
+
+    private fun login() {
+        val emailEditText = findViewById<TextInputEditText>(R.id.campo_email)
+        val passwordEditText = findViewById<TextInputEditText>(R.id.campo_password)
+
+        val email = emailEditText.text.toString()
+        val password = passwordEditText.text.toString()
+
+        if (usuarioValido(email, password)) {
+            // Usuario valido
+                Log.d("MainActivity", email)
+        } else {
+            // Usuario invalido
+            Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun usuarioValido(email: String, password: String): Boolean {
+        val cursor = instanciaUsuarios.searchUsuario(email, password)
+        val userExists = (cursor?.count ?: 0) > 0
+        cursor?.close()
+        return userExists
     }
 }

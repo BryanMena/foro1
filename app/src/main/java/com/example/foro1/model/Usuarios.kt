@@ -75,11 +75,11 @@ class Usuarios(context: Context?) {
         )
     }
 
-    fun searchUsuario(nombreUsuario: String): Cursor? {
+    fun searchUsuario(nombreUsuario: String, password: String): Cursor? {
         val columns = arrayOf(COL_ID, COL_NOMBRE, COL_USUARIO, COL_PASSWORD)
         return db?.query(
             TABLE_NAME_USUARIOS, columns,
-            "$COL_USUARIO=?", arrayOf(nombreUsuario), null, null, null
+            "$COL_USUARIO=? AND $COL_PASSWORD=?", arrayOf(nombreUsuario, password), null, null, null
         )
     }
 }

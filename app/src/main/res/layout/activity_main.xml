@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
      <com.google.android.material.textfield.TextInputEditText
+             android:id="@+id/campo_email"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="@string/correo_electronico"
@@ -31,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campo_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
@@ -38,6 +40,7 @@
                 android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
   <Button
+          android:id="@+id/boton_login"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="@string/iniciar_sesion"
