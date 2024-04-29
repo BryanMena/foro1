@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.foro1.db.HelperDB
 import android.database.sqlite.SQLiteDatabase
+import com.example.foro1.model.Productos
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,5 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         dbHelper = HelperDB(this)
         db = dbHelper!!.writableDatabase
+
+        val productos = Productos(this)
+        productos.insertValuesDefault()
     }
 }

@@ -38,23 +38,27 @@ class Productos(context: Context?) {
 
     fun generarContentValues(
         nombreProducto: String?,
-        precio: Double
+        precio: Double,
+        rutaImagen: String?
     ): ContentValues {
         val valores = ContentValues()
         valores.put(COL_NOMBRE_PRODUCTO, nombreProducto)
         valores.put(COL_PRECIO, precio)
+        valores.put(COL_RUTA_IMAGEN, rutaImagen)
         return valores
     }
 
     fun insertValuesDefault() {
         val productos = arrayOf(
-            arrayOf("Manzana", 1.5),
-            arrayOf("Banana", 2.0),
-            arrayOf("Naranja", 1.0)
+            arrayOf("Manzana", 1.5, "manzana"),
+            arrayOf("Banana", 2.0, "banana"),
+            arrayOf("Pera", 1.0, "pera"),
+            arrayOf("Naranja", 1.0, "naranja"),
+            arrayOf("Requeson", 3.0, "requeson")
         )
 
         // Verificación si existen registros precargados
-        val columns = arrayOf(COL_ID, COL_NOMBRE_PRODUCTO, COL_PRECIO)
+        val columns = arrayOf(COL_ID, COL_NOMBRE_PRODUCTO, COL_PRECIO, COL_RUTA_IMAGEN)
         val cursor: Cursor? = db?.query(TABLE_NAME_PRODUCTOS, columns, null, null, null, null, null)
 
         // Validando que se ingrese la información solamente una vez, cuando se instala por primera vez la aplicación
@@ -63,7 +67,8 @@ class Productos(context: Context?) {
             for (producto in productos) {
                 val nombreProducto = producto[0] as String?  // Conversión explícita a String
                 val precio = producto[1] as Double         // Conversión explícita a Double
-                db?.insert(TABLE_NAME_PRODUCTOS, null, generarContentValues(nombreProducto, precio))
+                val rutaImagen = producto[2] as String?    // Conversión explícita a String
+                db?.insert(TABLE_NAME_PRODUCTOS, null, generarContentValues(nombreProducto, precio, rutaImagen))
             }
         }
         cursor?.close()
