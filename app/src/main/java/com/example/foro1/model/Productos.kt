@@ -52,11 +52,12 @@ class Productos(context: Context?) {
 
     fun insertValuesDefault() {
         val productos = arrayOf(
-            arrayOf("Manzana", 1.5, "manzana"),
-            arrayOf("Banana", 2.0, "banana"),
-            arrayOf("Pera", 1.0, "pera"),
-            arrayOf("Naranja", 1.0, "naranja"),
-            arrayOf("Requeson", 3.0, "requeson")
+            arrayOf("Manzana", 1.50, "manzana"),
+            arrayOf("Banana", 2.00, "banana"),
+            arrayOf("Pera", 1.25, "pera"),
+            arrayOf("Naranja", 1.25, "naranja"),
+            arrayOf("Fresa", 3.00, "fresa"),
+            arrayOf("Mango", 3.00, "mango")
         )
 
         // Verificación si existen registros precargados

@@ -1,7 +1,6 @@
 package com.example.foro1
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
@@ -117,7 +116,12 @@ class ProductosActivity : AppCompatActivity() {
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         400
                     )
-                    setImageResource(R.drawable.manzana)
+                    val recurso = context.resources.getIdentifier(producto.rutaImagen, "drawable", context.packageName)
+                    if (recurso != 0) {
+                        setImageResource(recurso)
+                    } else {
+                        setImageResource(R.drawable.manzana)
+                    }
                     scaleType = ImageView.ScaleType.CENTER_CROP
                 })
 
