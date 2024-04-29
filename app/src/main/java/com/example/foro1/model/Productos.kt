@@ -24,13 +24,15 @@ class Productos(context: Context?) {
         val COL_ID = "idProducto"
         val COL_NOMBRE_PRODUCTO = "nombreProducto"
         val COL_PRECIO = "precio"
+        val COL_RUTA_IMAGEN = "rutaImagen"
 
         // sentencia SQL para crear la tabla
         val CREATE_TABLE_PRODUCTOS = (
                 "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_PRODUCTOS + "("
                         + COL_ID + " integer primary key autoincrement,"
                         + COL_NOMBRE_PRODUCTO + " varchar(100) NOT NULL,"
-                        + COL_PRECIO + " real NOT NULL)"
+                        + COL_PRECIO + " real NOT NULL,"
+                        + COL_RUTA_IMAGEN + " varchar(100))"
                 )
     }
 

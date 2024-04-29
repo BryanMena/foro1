@@ -42,4 +42,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("androidx.sqlite:sqlite:2.2.0")
+    implementation("androidx.sqlite:sqlite-framework:2.2.0")
 }
