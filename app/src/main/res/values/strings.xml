@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">foro1</string>
     <string name="ver_carrito">Ver carrito</string>
+    <string name="correo_electronico">Correo Electronico</string>
+    <string name="password">Password</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="no_tienes_cuenta">No tienes cuenta?</string>
+    <string name="registrate">Registrate</string>
+    <string name="crear_cuenta">Crear cuenta</string>
+    <string name="nombre">Nombre</string>
 </resources>

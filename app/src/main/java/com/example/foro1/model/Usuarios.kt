@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 import com.example.foro1.db.HelperDB
 
 class Usuarios(context: Context?) {
@@ -75,11 +76,16 @@ class Usuarios(context: Context?) {
         )
     }
 
-    fun searchUsuario(nombreUsuario: String): Cursor? {
+    fun searchUsuario(nombreUsuario: String, password: String): Cursor? {
         val columns = arrayOf(COL_ID, COL_NOMBRE, COL_USUARIO, COL_PASSWORD)
         return db?.query(
             TABLE_NAME_USUARIOS, columns,
-            "$COL_USUARIO=?", arrayOf(nombreUsuario), null, null, null
+            "$COL_USUARIO=? AND $COL_PASSWORD=?", arrayOf(nombreUsuario, password), null, null, null
         )
     }
+
+    fun insertUsuario(nombre: String?, usuario: String?, password: String?) {
+        db?.insert(TABLE_NAME_USUARIOS, null, generarContentValues(nombre,usuario,password))
+    }
+
 }
