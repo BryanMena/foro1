@@ -1,9 +1,11 @@
 package com.example.foro1
 
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -41,6 +43,12 @@ class MainActivity : AppCompatActivity() {
         botonLogin.setOnClickListener {
             login()
         }
+
+        val registrateTextView = findViewById<TextView>(R.id.texto_registrate)
+        registrateTextView.setOnClickListener {
+            val intent = Intent(this, RegUserActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun login() {
@@ -61,8 +69,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun usuarioValido(email: String, password: String): Boolean {
         val cursor = instanciaUsuarios.searchUsuario(email, password)
-        val userExists = (cursor?.count ?: 0) > 0
+        val usuarioExiste = (cursor?.count ?: 0) > 0
         cursor?.close()
-        return userExists
+        return usuarioExiste
     }
 }

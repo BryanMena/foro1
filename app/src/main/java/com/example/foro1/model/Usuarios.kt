@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 import com.example.foro1.db.HelperDB
 
 class Usuarios(context: Context?) {
@@ -82,4 +83,9 @@ class Usuarios(context: Context?) {
             "$COL_USUARIO=? AND $COL_PASSWORD=?", arrayOf(nombreUsuario, password), null, null, null
         )
     }
+
+    fun insertUsuario(nombre: String?, usuario: String?, password: String?) {
+        db?.insert(TABLE_NAME_USUARIOS, null, generarContentValues(nombre,usuario,password))
+    }
+
 }
