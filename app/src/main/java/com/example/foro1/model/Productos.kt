@@ -10,6 +10,8 @@ class Productos(context: Context?) {
 
     private var helper: HelperDB? = null
     private var db: SQLiteDatabase? = null
+    data class Producto(val id: Int, val nombre: String, val precio: Double, val rutaImagen: String)
+
 
     init {
         helper = HelperDB(context)
@@ -75,7 +77,7 @@ class Productos(context: Context?) {
     }
 
     fun showAllProductos(): Cursor? {
-        val columns = arrayOf(COL_ID, COL_NOMBRE_PRODUCTO, COL_PRECIO)
+        val columns = arrayOf(COL_ID, COL_NOMBRE_PRODUCTO, COL_PRECIO, COL_RUTA_IMAGEN)
         return db?.query(
             TABLE_NAME_PRODUCTOS, columns,
             null, null, null, null, null
@@ -83,7 +85,7 @@ class Productos(context: Context?) {
     }
 
     fun searchProducto(nombreProducto: String): Cursor? {
-        val columns = arrayOf(COL_ID, COL_NOMBRE_PRODUCTO, COL_PRECIO)
+        val columns = arrayOf(COL_ID, COL_NOMBRE_PRODUCTO, COL_PRECIO, COL_RUTA_IMAGEN)
         return db?.query(
             TABLE_NAME_PRODUCTOS, columns,
             "$COL_NOMBRE_PRODUCTO=?", arrayOf(nombreProducto), null, null, null
